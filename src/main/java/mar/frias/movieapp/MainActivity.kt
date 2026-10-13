@@ -4,11 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,6 +18,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var btn_signin: Button
     lateinit var field_email: EditText
     lateinit var field_password: EditText
+
+    lateinit var btn_forgot_password: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +35,8 @@ class MainActivity : AppCompatActivity() {
         btn_signin = findViewById<Button>(R.id.btn_sign)
         field_email = findViewById<EditText>(R.id.field_email)
         field_password = findViewById<EditText>(R.id.field_password)
+        btn_forgot_password = findViewById<TextView>(R.id.btn_password)
+
 
         btn_signin.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
@@ -47,6 +53,11 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Incorrect User", Toast.LENGTH_SHORT).show()
             }
 
+        }
+
+        btn_forgot_password.setOnClickListener {
+            val intent = Intent(this, ForgetPassword::class.java)
+            startActivity(intent)
         }
 
     }

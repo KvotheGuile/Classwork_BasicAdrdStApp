@@ -63,7 +63,7 @@ class RegisterActivity : AppCompatActivity() {
             return;
         }
 
-        if (field_password.text != field_password_confirm.text){
+        if (field_password.text.toString() != field_password_confirm.text.toString()){
             errorToast("Password does not match")
             return;
         }
@@ -71,8 +71,7 @@ class RegisterActivity : AppCompatActivity() {
 
         val today = Calendar.getInstance()
         var isAdult: Boolean = false
-        val age = datePicker.year - today.get(Calendar.YEAR)
-
+        val age = today.get(Calendar.YEAR) - datePicker.year
         if (age > 18){
             isAdult = true
         }else if (age == 18){
@@ -90,7 +89,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         if (!isAdult){
-            errorToast("You must be over 18 years old")
+            errorToast("You must be over 18 years old.")
             return;
         }
 
